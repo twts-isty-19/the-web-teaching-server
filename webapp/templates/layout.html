@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %} - Applications Web et Sécurité</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="utf-8">
+</head>
+<body>
+    <h1><a href="/">Applications Web et Sécurité</a></h1>
+    <nav>
+        {% if current_user.is_authenticated %}
+          <div><span>{{ current_user.email }}</span>
+          &ndash;<a href="{{ url_for('logout') }}">Se déconnecter</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <section class="content">
+      <header>
+        {% block header %}{% endblock %}
+      </header>
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+      {% block content %}{% endblock %}
+    </section>
+</body>
+</html>

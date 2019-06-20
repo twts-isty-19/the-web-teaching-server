@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Identification{% endblock %}
+
+{% block content %}
+Identifiez-vous:
+
+<form method="POST" action="/login">
+    <label>Email UVSQ: <input type="email" name="email" /></label>
+    <label>Password: <input type="password" name="password" /></label>
+    <input type="submit" name="" value="envoyer" />
+</form>
+{% endblock %}

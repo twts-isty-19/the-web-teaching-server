@@ -1,1 +1,1 @@
-PYTHONUNBUFFERED=true python3 server.py
+PYTHONUNBUFFERED=true python3 webapp/app.py

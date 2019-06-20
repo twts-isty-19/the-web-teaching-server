@@ -92,13 +92,11 @@ def chapter(chapter_id):
             "La leçon n'est pas encore écrite ! Revenez plus tard."
         )
 
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=os.getenv('DEBUG', False))
-
-
 def render_error(message):
     return flask.render_template(
         'error.html',
         message=message,
     ), 404
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=os.getenv('DEBUG', False))

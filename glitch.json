@@ -1,0 +1,22 @@
+{
+  "install": "bash glitch_sh/install.sh",
+  "start": "bash glitch_sh/start.sh",
+  "watch": {
+    "ignore": [
+      "\\.pyc$"
+    ],
+    "install": {
+      "include": [
+        "^requirements\\.txt$"
+      ]
+    },
+    "restart": {
+      "include": [
+        "\\.py$",
+        "\\.html$",
+        "^sh/start\\.sh"
+      ]
+    },
+    "throttle": 1000
+  }
+}

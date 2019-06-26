@@ -1,26 +1,54 @@
 {% extends "layout.html" %}
 
-{% block title %}HTML et CSS{% endblock %}
+{% block title %}HTML and CSS{% endblock %}
 
 {% block content %}
-<h2>HTML et CSS</h2>
+<h2>HTML and CSS</h2>
 
-<h3>
-    Qu'est-ce qu'est une balise HTML et comment s'imbriquent ces balises?
-</h3>
+<p>Here are some links to learn the basics about HTML and CSS.
+    We will learn how to
+    use specific HTML tags and CSS rules during the partice session.
+    <strong>Be very careful if you
+    browse the web on your own</strong>: a lot of ressources are outdated
+    or do not show good practices. If you are looking at answer on
+    StackOverflow or similar, please check the date of the answer,and
+    ompare the number of votes on the accepted answer and the second
+    answer.
 
-Une balise HTML est une information structurée. Voici les balises
-les plus utilisées:
+    <br />
+
+    Keep in mind:
+    <ul>
+        <li>HTML is for content <em>only</em>,</li>
+        <li>CSS is for presentation,</li>
+        <li>use tables in order to display tabular data, not for layout!</li>
+    </ul>
+</p>
+
+<p><strong>Links:</strong></p>
 <ul>
-    <li><code>&lgt;p></code> définit un paragraphe;</li>
-    <li><code><pre>&lgt;h1> &lgt;h2> ... &lgt;h6</pre></code> définissent des en-têtes
-    de plusieurs niveau (l;</li>
+    <li>HTML: <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started">https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started</a></li>
+    <li>CSS read at least the content of the following sections:
+        <ul>
+            <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/How_CSS_works">
+                    How CSS work
+                </a>,
+            </li>
+            <li>
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors">
+                    all the sections concerning the selectors
+                </a>
+            </li>
+            <li>
+                and
+                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction">
+                    the overview concerning CSS layout
+                </a> (you can ignore "Floats" which are pretty difficult to
+                use correctly, just be aware that it exists 😊).
+            </li>
+        </ul>
+    </li>
 </ul>
-
-Voici un exemple
-<textarea readonly class="code">
-<p>Salut!</p>
-</textarea>
-
 
 {% endblock %}

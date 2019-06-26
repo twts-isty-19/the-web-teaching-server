@@ -1,22 +1,28 @@
 {% extends "layout.html" %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Welcome{% endblock %}
 
 {% block content %}
-<p>Bienvenue sur la page du cours AWS</p>
+<p>Welcome to "The Web Teaching Server". The aim of this website
+    is to learn how to build... a website!
+    This website is deliberately minimalist in design and functionalities
+    because YOU will learn partly by hacking this app and proposing
+    improvements. See TODO.</p>
 
-<p>Voici les différents chapitres accessibles</p>
+<p>This website also contains some classical teaching material and
+    exercises. Here are the available chapters:
+</p>
 <table>
     <thead>
-        <th>Chapitre</th>
-        <th>Exercices</th>
-        <th>À finir le</th>
+        <th>Chapters</th>
+        <th>Exercises</th>
+        <th>To do:</th>
     </thead>
     <tbody>
         {% for chapter in chapters %}
         <tr>
             <td>
-                <a href="{{ url_for('chapter', chapter_id=chapter.id) }}">
+                <a href="{{ url_for('lessons.chapter', chapter_id=chapter.id) }}">
                     {{ chapter.name }}
                 </a>
             </td>

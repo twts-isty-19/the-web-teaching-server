@@ -1,18 +1,19 @@
 <!doctype html>
 <html>
 <head>
-    <title>{% block title %}{% endblock %} - Applications Web et Sécurité</title>
+    <title>{% block title %}{% endblock %} - The Web Teaching Server</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="utf-8">
+    {% block head %}{% endblock %}
 </head>
 <body>
-    <h1><a href="/">Applications Web et Sécurité</a></h1>
+    <h1><a href="/">The Web Teaching Server</a></h1>
     <nav>
         {% if current_user.is_authenticated %}
           <div><span>{{ current_user.email }}</span>
-          &ndash;<a href="{{ url_for('logout') }}">Se déconnecter</a></li>
+          &ndash;<a href="{{ url_for('users.logout') }}">Log out</a>
+        </div>
         {% endif %}
-      </ul>
     </nav>
     <section class="content">
       <header>

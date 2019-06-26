@@ -1,7 +1,6 @@
 echo "Grab all python dependencies..."
 pip3 install --user --upgrade pip >/dev/null
-grep -v "psycopg2" webapp/requirements.txt > /tmp/requirements.txt
-pip3 install --user  -r /tmp/requirements.txt > /dev/null
+pip3 install --user  -r webapp/requirements.txt > /dev/null
 echo "Python deps grabbed!"
 
 ELEPHANTSQL_KEY="a125754c-7551-482a-bd45-ab24c19ca9bd"

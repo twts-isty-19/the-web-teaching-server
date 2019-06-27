@@ -23,7 +23,7 @@ then
     echo "SECREY_KEY=$SECREY_KEY" >> .env
 fi
 
-
+source .env
 
 echo "Instianciate database, populating it..."
 if ! python3 webapp/create_chapters.py; then

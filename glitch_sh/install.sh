@@ -8,7 +8,7 @@ ELEPHANTSQL_KEY="a125754c-7551-482a-bd45-ab24c19ca9bd"
 
 if [ -z "$DB_URI" ]
 then
-    DB_URI=`curl -s -u :$ELEPHANTSQL_KEY \
+    export DB_URI=`curl -s -u :$ELEPHANTSQL_KEY \
     -d "name=test&plan=turtle&region=amazon-web-services::us-east-1" \
     https://customer.elephantsql.com/api/instances \
     | jq '.url' \
@@ -19,7 +19,7 @@ fi
 
 if [ -z "$SECREY_KEY" ]
 then
-    SECREY_KEY=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-67};echo;`
+    export SECREY_KEY=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-67};echo;`
     echo "SECREY_KEY=$SECREY_KEY" >> .env
 fi
 

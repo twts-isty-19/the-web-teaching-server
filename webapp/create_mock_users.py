@@ -5,9 +5,10 @@ from users import User
 
 
 password = "12345"
+email = "test@example.fr"
 
 u1 = User(
-    email="test@example.fr",
+    email=email,
     name="Toto",
 )
 u1.set_password(password)
@@ -20,4 +21,4 @@ with app.app_context():
     except IntegrityError:
         db.session.rollback()
 
-print("User %s with password %s is in the DB" % (u1.email, password))
+print("User %s with password %s is in the DB" % (email, password))

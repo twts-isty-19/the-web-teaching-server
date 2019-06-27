@@ -24,7 +24,7 @@ app.config.update({
     'MAIL_USE_SSL': True,
     'MAIL_USERNAME': os.getenv('MAIL_USERNAME', 'foo@gmail.com'),
     'MAIL_PASSWORD': os.getenv('MAIL_PASSWORD', '12345'),
-    'SERVER_NAME': os.getenv('SERVER_NAME', 'localhost:5000'),
+    'SERVER_NAME': os.getenv('SERVER_NAME'),
 })
 
 

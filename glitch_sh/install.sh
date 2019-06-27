@@ -17,6 +17,9 @@ then
     echo "DB_URI=$DB_URI">> .env
 fi
 
+# Waiting the DB is setted up
+sleep 2
+
 if [ -z "$SECREY_KEY" ]
 then
     export SECREY_KEY=`< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-67};echo;`

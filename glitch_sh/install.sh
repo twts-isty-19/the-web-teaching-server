@@ -38,3 +38,9 @@ fi
 
 echo "Database instanciated and populated!"
 
+# Hack in order to discard auto-commit from glitch
+echo '#!/bin/sh
+if grep -q "Checkpoint$" "$1"; then
+        echo "Skipping default commit" >> /tmp/message
+        exit 1
+fi' > /app/.git/hooks/prepare-commit-msg && chmod +x /app/.git/hooks/prepare-commit-msg

@@ -26,8 +26,6 @@ then
     echo "SECREY_KEY=$SECREY_KEY" >> .env
 fi
 
-source .env
-
 echo "Instianciate database, populating it..."
 if ! python3 webapp/create_chapters.py; then
     exit;
@@ -44,3 +42,5 @@ if grep -q "Checkpoint$" "$1"; then
         echo "Skipping default commit" >> /tmp/message
         exit 1
 fi' > /app/.git/hooks/prepare-commit-msg && chmod +x /app/.git/hooks/prepare-commit-msg
+
+refresh

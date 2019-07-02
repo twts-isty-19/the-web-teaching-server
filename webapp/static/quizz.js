@@ -1,10 +1,10 @@
 
-let main_node = document.querySelector("#exercises-app");
+let main_node = document.querySelector("#quizz-app");
 let chapter_id = main_node.dataset.chapterId;
 let DB = DOM_Builder;
 
 async function get_answers() {
-    let response = await fetch("/exercises/" + chapter_id, {
+    let response = await fetch("/quizz/" + chapter_id, {
         headers: {"Content-Type": "application/json"}
     });
 
@@ -52,7 +52,7 @@ function validate_answer(answers) {
     let answer = document.querySelector("#answer-input").value;
     let question = answers.questions[answers.current_question];
     question.answer = answer;
-    fetch("/exercises/" + chapter_id, {
+    fetch("/quizz/" + chapter_id, {
         method: "POST",
         headers: {
           'Accept': 'application/json',

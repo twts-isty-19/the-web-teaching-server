@@ -26,7 +26,11 @@
                     {{ chapter.name }}
                 </a>
             </td>
-            <td>{{ chapter.exercises_status }}</td>
+            <td>
+                <a href="{{ url_for('answers.answers_get', chapter_id=chapter.id) }}">
+                    {{ chapter.quizz_status }}
+                </a>
+            </td>
             <td>{{ chapter.end_date }}</td>
         </tr>
         {% endfor %}

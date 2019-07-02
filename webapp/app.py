@@ -48,15 +48,7 @@ def home():
     chapters = lessons_module.Chapter.query.all()
     answers = answers_module.Answers.query.filter_by(user_id=flask_login.current_user.get_id())
     for chapter in chapters:
-        try:
-            answer = answers_module.get_by_chapter_id(answers, chapter.id)
-            chapter.exercises_status = "%s/%s"%(
-                answer.nb_answered(),
-                len(chapter.questions),
-            )
-        except ValueError:
-            chapter.exercises_status = "Not started"
-
+        chapter.quizz_status = answers_module.quizz_status(answers, chapter)
     return flask.render_template('home.html', chapters=chapters)
 
 if __name__ == '__main__':

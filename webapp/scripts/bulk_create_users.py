@@ -1,5 +1,9 @@
+import sys
+
+sys.path.append('.')
+
 import app
-import users
+import blueprints.users as users
 
 USERS = [
     ("Sébastien", "sebsheep@yahoo.fr"),

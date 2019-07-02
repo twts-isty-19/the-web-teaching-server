@@ -1,18 +1,14 @@
-import sys
-
-sys.path.append('.')
-
-from app import  db, app
+from app import db, app
 from datetime import date
 from sqlalchemy.exc import IntegrityError
-from blueprints.lessons import Chapter
+from lessons import Chapter
 
 
 CHAPTERS = [
     {
         'id': '01-HTML-CSS',
         'name' : 'HTML et CSS',
-        'end_date': date(2019, 9, 15),
+        'end_date': date(2019, 9, 12),
         'questions': [
             {
                 'title':
@@ -24,29 +20,35 @@ CHAPTERS = [
                     "  &lt;p id='head' class='column-3' data-userid='42'>"
                     "    Hello world!"
                     "  &lt;/p>",
-                'grade_by_answer':{},
+                'grade_by_answer':
+                    { "id class data-userid": 1,
+                      "Hello world": 0,
+                    },
                 'coefficient': 0.5,
             },
             {
                 'title':
                     "Give three tags that belong to the head section"
-                    " of an HTML page (i.e. between &lt;head> and &lt;/head>)."
-                    " Separate your answers by a space" ,
-                'grade_by_answer': {},
+                    " of an HTML page (i.e. between &lt;head> and &lt;/head>)." ,
+                'grade_by_answer':
+                    {}, # will be completed during correction!
                 'coefficient': 0.5,
             },
             {
                 'title':
                     "Write a piece of HTML which displays \"Go to hell\""
                     " and is a link to the website \"http://666.com\".",
-                'grade_by_answer': {},
+                'grade_by_answer':
+                    { "<a href='http://666.com'>Go to hell</a>": 1,
+                      '<a href="http://666.com">Go to hell</a>': 1,
+                    },
                 'coefficient': 0.5,
             },
         ],
     },
     {
-        'id': '02-Elm',
-        'name' : 'Elm',
+        'id': '02-JS',
+        'name' : 'Javascript',
         'end_date': date(2019, 9, 19),
         'questions': [],
     },
@@ -56,8 +58,9 @@ with app.app_context():
     db.create_all()
     for chapter in CHAPTERS:
         try:
-            db.session.merge(Chapter(**chapter))
+            db.session.add(Chapter(**chapter))
             db.session.commit()
         except IntegrityError:
             db.session.rollback()
             print("Chapter %s already exists" % chapter['id'])
+

@@ -45,7 +45,7 @@ with app.app_context():
 @app.route('/')
 @flask_login.login_required
 def home():
-    chapters = lessons_module.Chapter.query.all()
+    chapters = sorted(lessons_module.Chapter.query.all(), key=lambda c: c.id)
     answers = answers_module.Answers.query.filter_by(user_id=flask_login.current_user.get_id())
     for chapter in chapters:
         chapter.quizz_status = answers_module.quizz_status(answers, chapter)

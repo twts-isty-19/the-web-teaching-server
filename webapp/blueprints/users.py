@@ -120,4 +120,4 @@ def login_get():
 @users.route('/logout')
 def logout():
     flask_login.logout_user()
-    return flask.redirect(flask.url_for('login_get'))
+    return flask.redirect(flask.url_for('users.login_get'))

@@ -1,7 +1,11 @@
+import sys
+
+sys.path.append('.')
+
 from app import db, app
 from datetime import date
 from sqlalchemy.exc import IntegrityError
-from users import User
+from blueprints.users import User
 
 
 password = "12345"

@@ -19,8 +19,8 @@ answers = Blueprint(
 )
 
 class Answers(db.Model):
-    chapter_id =db.Column(db.Text, db.ForeignKey('chapter.id'), primary_key=True)
-    user_id = db.Column(db.Text, db.ForeignKey('users.email'), primary_key=True)
+    chapter_id =db.Column(db.Text, db.ForeignKey('chapter.id', ondelete="CASCADE"), primary_key=True)
+    user_id = db.Column(db.Text, db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
     answers = db.Column(JSON)
 
     def nb_answered(self):

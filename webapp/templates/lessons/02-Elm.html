@@ -1,8 +1,53 @@
 {% extends "layout.html" %}
 
-{% block title %}JS{% endblock %}
+{% block title %}Elm{% endblock %}
 
 {% block content %}
-Blabla!
+<h2>Execute code in the browser</h2>
 
+<p>HTML is not a <em>programming</em> language in the sense that we can not
+compute anything. We can only represent static data.
+</p>
+
+<p>The traditional (and currently almost the only) way to execute something in the browser is to write Javascript. However, this
+    language, <a href="https://en.wikipedia.org/wiki/JavaScript">prototyped
+    in 10 days</a>, is hard to use efficiently:
+</p>
+    <ul>
+        <li>errors messages can be as useless as "undefined is not a function",</li>
+        <li>
+            <a href="https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839/">
+            type coercion is pretty complex
+            </a>
+            and often leads to hard-to-debug situations,
+        </li>
+        <li>there are a lot of syntactic constructions, some of them being
+            <em>almost</em> identical (but not totally!). Moreover, we
+            can not use directly the newest syntaxes since the old browsers
+            won't support it.
+        </li>
+    </ul>
+
+<p>To compensate thoses weaknesses, developpers have produced a lot of
+    libraries and frameworks. Nowdays, a standard project
+    in Javascript includes a stack of several of those libraries
+    and frameworks. E.g. React+Redux+Axios+Typescript... Each of those
+    library is great, but each adds complexity to the development
+    and do not give strong garantees about the correct execution of
+    the application.
+</p>
+
+<p>Still, the browsers only executes Javascript (and now Webassembly, but
+    it is another story). The solution I propose in this course is to
+    write our applications in Elm, a complete different language,
+    which compiles to Javascript. That means we will write the code in
+    Elm, run a compiler which will transform the code in Javascript,
+    and finally execute the code produced by the compiler.
+
+    <br/>
+    Don't be scarry, the compilation step will be integrated in the
+    tools we will use!
+</p>
+
+<h2>Some Elm</h2>
 {% endblock %}

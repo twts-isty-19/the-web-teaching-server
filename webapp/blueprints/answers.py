@@ -5,9 +5,9 @@ from sqlalchemy.dialects.postgresql import JSON
 from sqlalchemy.orm.exc import NoResultFound
 from datetime import datetime
 
-import lessons
-import users
-from lessons import Chapter
+import blueprints.lessons as lessons
+import blueprints.users as users
+from blueprints.lessons import Chapter
 
 from database import db
 
@@ -99,7 +99,7 @@ def answers_post(chapter_id):
     if chapter is None:
         return flask.jsonify({"error": "chapter does not exist"}), 404
 
-    if chapter.end_date < datetime.now():
+    if chapter.end_date < datetime.now().date():
         return flask.jsonify({"error": "deadline exceeded"}), 400
 
     chapter_questions = [q['title'] for q in chapter.questions]

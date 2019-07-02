@@ -26,7 +26,8 @@ CHAPTERS = [
             {
                 'title':
                     "Give three tags that belong to the head section"
-                    " of an HTML page (i.e. between &lt;head> and &lt;/head>)." ,
+                    " of an HTML page (i.e. between &lt;head> and &lt;/head>)."
+                    " Separate your answers by a space" ,
                 'grade_by_answer': {},
                 'coefficient': 0.5,
             },
@@ -40,8 +41,8 @@ CHAPTERS = [
         ],
     },
     {
-        'id': '02-JS',
-        'name' : 'Javascript',
+        'id': '02-Elm',
+        'name' : 'Elm',
         'end_date': date(2019, 9, 19),
         'questions': [],
     },

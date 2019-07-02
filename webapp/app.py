@@ -4,9 +4,9 @@ import flask
 import flask_login
 import flask_mail
 
-import lessons as lessons_module
-import users as users_module
-import answers as answers_module
+import blueprints.lessons as lessons_module
+import blueprints.users as users_module
+import blueprints.answers as answers_module
 
 from database import db
 

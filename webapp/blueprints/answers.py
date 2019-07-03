@@ -26,7 +26,7 @@ class Answers(db.Model):
     def nb_answered(self):
         return len([
             a for a in self.answers['questions']
-            if a['answer'] is not None
+            if a['answer']
         ])
 
 
@@ -88,7 +88,7 @@ def answers_get(chapter_id):
     chapter_questions = [q['title'] for q in chapter.questions]
     answers_questions = [q['title'] for q in  answers['questions']]
     if  chapter_questions != answers_questions:
-        anwsers = build_answers(chapter)
+        answers = build_answers(chapter)
 
     return flask.jsonify(answers)
 

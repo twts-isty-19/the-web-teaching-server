@@ -52,6 +52,7 @@ function validate_answer(answers) {
     let answer = document.querySelector("#answer-input").value;
     let question = answers.questions[answers.current_question];
     question.answer = answer;
+    answers.current_question += 1;
     fetch("/quizz/" + chapter_id, {
         method: "POST",
         headers: {
@@ -60,7 +61,6 @@ function validate_answer(answers) {
         },
         body: JSON.stringify(answers)
     })
-    answers.current_question += 1;
     view_answers(answers);
 }
 

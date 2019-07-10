@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}HTML and CSS{% endblock %}
+
+{% block content %}
+<h2>HTTP</h2>
+
+<p>HTTP (Hyper Text Transfert Protocol) is the standard way to communicate over
+    the internet for the websites. This lesson will explain the base principles
+    of the protocol, how to issue requests from the browser (without code for the
+    moment) and how to handle those requests on the server in order to send
+    a "response".
+
+    <br />
+
+    Keep in mind: <strong>Never trust user input!</strong>. Indeed, all the
+    requests are totally controlled by the client. Hence, the server HAS TO
+    check the validity of those request since the client can be faulty or even
+    worse: malicious!
+
+</p>
+
+<h3>Slides:</h3>
+<p>You can see <a href="https://slides.com/sebbes/http-communication">
+    the slides of the lecture</a>.<p>
+
+<p><strong>For an exausthive ressource,</strong> please read
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/">the Mozilla
+documentation on HTTP.</a> </p>
+
+
+<h3>Tutorial</h3>
+<p>Create an account on Glitch.com and log you in. <br/>
+You can now <a href="https://glitch.com/edit/#!/remix/the-web-teaching-server-tuto-03" target="_blank">do the tutorial!</a></p>
+{% endblock %}

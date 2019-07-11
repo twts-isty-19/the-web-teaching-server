@@ -103,6 +103,12 @@ CHAPTERS = [
 
         ],
     },
+    {
+        'id': '03-HTTP',
+        'name': 'HTTP',
+        'end_date': date(2019, 9, 26),
+        'questions': [],
+    }
 ]
 
 with app.app_context():

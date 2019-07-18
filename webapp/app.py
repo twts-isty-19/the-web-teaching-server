@@ -5,6 +5,7 @@ import flask_login
 import flask_mail
 
 import blueprints.lessons as lessons_module
+import blueprints.chapter_http as chapter_http_module
 import blueprints.users as users_module
 import blueprints.answers as answers_module
 
@@ -29,9 +30,10 @@ app.config.update({
 
 
 db.init_app(app)
-app.register_blueprint(lessons_module.lessons)
 app.register_blueprint(users_module.users)
+app.register_blueprint(lessons_module.lessons)
 app.register_blueprint(answers_module.answers)
+app.register_blueprint(chapter_http_module.chapter_http)
 
 mail = flask_mail.Mail(app)
 
@@ -46,9 +48,16 @@ with app.app_context():
 @flask_login.login_required
 def home():
     chapters = sorted(lessons_module.Chapter.query.all(), key=lambda c: c.id)
-    answers = answers_module.Answers.query.filter_by(user_id=flask_login.current_user.get_id())
+    user = flask_login.current_user
+
     for chapter in chapters:
-        chapter.quizz_status = answers_module.quizz_status(answers, chapter)
+        if chapter.id == chapter_http_module.CHAPTER_ID:
+            chapter.quizz_status = chapter_http_module.quizz_status(user)
+        else:
+            chapter.quizz_status = answers_module.quizz_status(
+                chapter,
+                user,
+            )
     return flask.render_template('home.html', chapters=chapters)
 
 if __name__ == '__main__':

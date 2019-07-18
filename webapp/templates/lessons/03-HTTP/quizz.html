@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}Exercises{% endblock %}
+
+{% block content %}
+<p>This chapter is special, you have to meet some challenges instead of
+answer questions. You might need the developper tools of your browser (hit "F12"). Explore all the tabs!</p>
+
+
+<p>You can look at the source code if those challenges. It will
+ not necessarily help you to meet the challenges but it shows how to
+ use Flask to perform HTTP actions.
+</p>
+<ul>
+    <li>
+        <a href="{{ url_for('chapter_http.challenge_param') }}" target="_blank">
+            First challenge
+        </a>
+        {% if challenge_param %} &nbsp; &dash; Solved!{% endif%}
+    </li>
+    <li>
+        <a href="{{ url_for('chapter_http.challenge_get') }}" target="_blank">
+            Second challenge
+        </a>
+        {% if challenge_get %} &nbsp; &dash; Solved!{% endif%}
+    </li>
+    <li>
+        <a href="{{ url_for('chapter_http.challenge_post') }}" target="_blank">
+            Third challenge
+        </a>
+        {% if challenge_post %} &nbsp; &dash; Solved!{% endif%}
+    </li>
+    <li>
+        <a href="{{ url_for('chapter_http.challenge_repeat') }}" target="_blank">
+            Fourth challenge
+        </a>
+        {% if challenge_repeat %} &nbsp; &dash; Solved!{% endif%}
+    </li>
+    <li>
+        <a href="{{ url_for('chapter_http.challenge_content_type') }}" target="_blank">
+            Fifth challenge
+        </a>
+        {% if challenge_content_type %} &nbsp; &dash; Solved!{% endif%}
+    </li>
+{% endblock %}

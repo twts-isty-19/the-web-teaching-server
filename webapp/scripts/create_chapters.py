@@ -1,12 +1,14 @@
-import sys
+import sys, os
 
 sys.path.append('.')
 
-from app import  db, app
+from app import app
+from database import db
 from datetime import date
 from sqlalchemy.exc import IntegrityError
 from blueprints.lessons import Chapter
-
+import sqlalchemy
+import blueprints.answers as answers
 
 CHAPTERS = [
     {
@@ -111,6 +113,7 @@ CHAPTERS = [
     }
 ]
 
+
 with app.app_context():
     db.create_all()
     for chapter in CHAPTERS:
@@ -122,3 +125,4 @@ with app.app_context():
         except IntegrityError:
             db.session.rollback()
             print("Chapter %s already exists" % chapter['id'])
+

@@ -42,12 +42,14 @@ def build_answers(chapter):
         'current_question': 0,
     }
 
-def quizz_status(answers, chapter):
-    answer_object = get_by_chapter_id(answers, chapter.id)
+def quizz_status(chapter, user):
+    answer_object = Answers.query.get(
+        (chapter.id, user.get_id())
+    )
     if answer_object is None:
         res = "Not started"
     else:
-        res = "%s/%s" % (
+        res = "%d/%d" % (
           answer_object.nb_answered(),
           len(chapter.questions),
         )
@@ -57,11 +59,6 @@ def quizz_status(answers, chapter):
 
     return res
 
-def get_by_chapter_id(answers, chapter_id):
-    try:
-        return next(a for a in answers if a.chapter_id == chapter_id)
-    except StopIteration:
-        return None
 
 
 @answers.route('/quizz/<chapter_id>', methods=['GET'])
@@ -121,19 +118,3 @@ def answers_post(chapter_id):
         answers_object.answers = flask.request.json
     db.session.commit()
     return flask.jsonify({"status": "ok"})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

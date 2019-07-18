@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block title %}HTTP challenge{% endblock %}
+
+
+{% block content %}
+    <p>{{ message }}</p>
+    <p>This is your {{ count }}-th visit!
+        <a href="{{ url_for('answers.challenge_param', visit_count=count + 1) }}">
+            Visit this page again!
+        </a>
+    </p>
+
+{% endblock %}

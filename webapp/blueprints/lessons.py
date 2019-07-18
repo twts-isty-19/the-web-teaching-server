@@ -50,9 +50,6 @@ class FreeAnswerQuestion:
         )
 
 class QuestionsList:
-    kind_to_class = {
-        'FreeAnswerQuestion': FreeAnswerQuestion,
-    }
 
     def __init__(self, *args):
         self.questions = args
@@ -63,7 +60,7 @@ class QuestionsList:
     @classmethod
     def from_dicts(cls, dicts):
         cls(*(
-            cls.kind_to_class[d['kind']].from_dict(d)
+            FreeAnswerQuestion.from_dict(d)
             for d in dicts
         ))
 

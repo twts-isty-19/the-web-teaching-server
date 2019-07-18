@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}HTTP challenge{% endblock %}
+
+
+{% block content %}
+    <p>{{ message }}</p>
+    <p>This is your {{ count }}-th visit!</p>
+    <form>
+        <input type="hidden" name="count" value="{{ count + 1 }}" />
+        <input type="submit" value="Visit this page again!" />
+    </form>
+{% endblock %}

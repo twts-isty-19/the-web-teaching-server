@@ -11,3 +11,8 @@ services:
       - ./webapp:/opt/webapp
   db:
     image: postgres:latest
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

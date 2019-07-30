@@ -1,3 +1,11 @@
+/**
+ WARNING: this library is designed for educational purpose, don't use
+ in production.
+
+ The idea is to provide a similar API to the Html module of Elm:
+ all the view is computed from the data model, withou side effect.
+*/
+
 (function(){
 
 let events = new Set([

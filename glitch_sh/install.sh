@@ -27,10 +27,10 @@ then
 fi
 
 echo "Instianciate database, populating it..."
-if ! python3 webapp/create_chapters.py; then
+if ! python3 webapp/scripts/create_chapters.py; then
     exit;
 fi
-if ! python3 webapp/create_mock_users.py; then
+if ! python3 webapp/scripts/create_mock_users.py; then
     exit;
 fi
 

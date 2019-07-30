@@ -1,7 +1,7 @@
 # Clone into Glitch
 
 1. Create an account on https://glitch.com/ and log you in.
-2. [Clone this repo in Glitch by clicking this link!](https://glitch.com/edit/#!/remix/the-web-server-base-to-remix)
+2. [Clone this repo in Glitch by clicking this link!](https://glitch.com/edit/#!/remix/clone-from-repo?REPO_URL=https://github.com/twts-isty-19/the-web-teaching-server.git)
 
 It can takes a bit of times, you have to wait until the `Tools` button is quiet to be able to actually run the server. If it doesn't work, please
 check that you are logged in.

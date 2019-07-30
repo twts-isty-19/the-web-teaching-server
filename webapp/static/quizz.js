@@ -33,12 +33,13 @@ function view_answers(answers) {
             "Question " + (answers.current_question + 1) + "/" + answers.questions.length,
             DB.rawInDiv({}, question.title),
             DB.form({onsubmit: function(){ validate_answer(answers);}}, [
-                DB.input({
-                    type: "text",
-                    value: question.answer === null ? "" : question.answer,
+                DB.textarea({
                     placeholder: "Enter your answer here!",
-                    id: "answer-input"
-                }, []),
+                    id: "answer-input",
+                    rows: 7,
+                    cols: 80,
+                    style: "display: block;"
+                }, [question.answer === null ? "" : question.answer]),
                 DB.input({
                     type: "submit",
                     value: "Validate and next question!"

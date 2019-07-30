@@ -110,6 +110,10 @@ DOM_Builder.input = function (attrs, children) {
     return node("input", attrs, children);
 }
 
+DOM_Builder.textarea = function (attrs, children) {
+    return node("textarea", attrs, children);
+}
+
 DOM_Builder.form = function (attrs, children) {
     return node("form", attrs, children);
 }

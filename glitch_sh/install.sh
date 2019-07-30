@@ -44,4 +44,3 @@ if grep -q "Checkpoint$" "$1"; then
         exit 1
 fi' > /app/.git/hooks/prepare-commit-msg && chmod +x /app/.git/hooks/prepare-commit-msg
 
-refresh

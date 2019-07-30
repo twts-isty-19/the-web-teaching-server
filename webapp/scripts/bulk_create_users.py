@@ -6,7 +6,7 @@ import app
 import blueprints.users as users
 
 USERS = [
-    ("Sébastien", "sebsheep@yahoo.fr"),
+    ("Student Test", "stud@dom.org"),
 ]
 
 

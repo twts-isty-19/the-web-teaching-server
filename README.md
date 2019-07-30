@@ -6,7 +6,9 @@
 It can takes a bit of times, you have to wait until the `Tools` button is quiet to be able to actually run the server. If it doesn't work, please
 check that you are logged in.
 
-An user is automatically created with ids: test@example.fr/12345.
+Two users are automatically created with ids:
+* stud@dom.org/12345 (student account),
+* teach@dom.org/12345 (teacher account).
 
 # Push your work with Git!
 

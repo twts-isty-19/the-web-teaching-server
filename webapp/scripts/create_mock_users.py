@@ -13,7 +13,7 @@ email = "test@example.fr"
 
 users = [
     ("stud@dom.org", "Student", False),
-    ("teacher@dom.org", "Teacher", True)
+    ("teach@dom.org", "Teacher", True)
 ]
 
 users_inserted = []

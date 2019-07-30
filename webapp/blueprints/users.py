@@ -20,6 +20,7 @@ class User(flask_login.UserMixin, db.Model):
     __tablename__ = "users"
     email = db.Column(db.Text, primary_key=True)
     name = db.Column(db.Text)
+    is_teacher = db.Column(db.Boolean, default=False)
     token_for_register=db.Column(db.Text)
     password_hash = db.Column(db.Text)
 

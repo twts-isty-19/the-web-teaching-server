@@ -2,9 +2,9 @@ import flask
 import flask_login
 from flask.blueprints import Blueprint
 from jinja2.exceptions import TemplateNotFound
-from sqlalchemy.dialects.postgresql import JSON
 
 from database import db
+import json
 
 lessons = Blueprint(
     'lessons',
@@ -17,12 +17,27 @@ class Chapter(db.Model):
     id = db.Column(db.Text, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     end_date = db.Column(db.Date)
-    questions = db.Column(JSON)
+    questions = db.Column(db.Text)
 
+    @property
+    def questions_list(self):
+        try:
+            return self._questions_list
+        except AttributeError:
+            self._questions_list = QuestionsList.from_dicts(json.loads(self.questions))
+            return self._questions_list
+
+    @questions_list.setter
+    def questions_list(self, questions_list):
+        self.questions = json.dumps(questions_list.to_dicts())
+        self._questions_list = questions_list
+
+    def max_score(self):
+        return sum(q.coefficient for q in self.questions_list)
 
 class FreeAnswerQuestion:
     def __init__(self, title, grade_by_answer, coefficient):
-        """Grade has to be between 0 and 1"""
+        """Grade has to be an integer between 0 and 4"""
         self.title = title
         self.grade_by_answer = grade_by_answer
         self.coefficient = coefficient
@@ -38,8 +53,10 @@ class FreeAnswerQuestion:
             'title': self.title,
             'grade_by_answer': self.grade_by_answer,
             'coefficient': self.coefficient,
-            'kind': 'FreeAnswerQuestion'
         }
+
+    def __repr__(self):
+        return "[FreeAnswerQuestion: " + self.title[:10] + ", grade_by_answer:" +str(self.grade_by_answer) +"]"
 
     @classmethod
     def from_dict(cls, dict_):
@@ -48,6 +65,7 @@ class FreeAnswerQuestion:
             grade_by_answer=dict_['grade_by_answer'],
             coefficient=dict_['coefficient'],
         )
+
 
 class QuestionsList:
 
@@ -59,13 +77,16 @@ class QuestionsList:
 
     @classmethod
     def from_dicts(cls, dicts):
-        cls(*(
+        return cls(*(
             FreeAnswerQuestion.from_dict(d)
             for d in dicts
         ))
 
+    def __len__(self):
+        return len(self.questions)
+
     def __iter__(self):
-        return self.questions
+        return iter(self.questions)
 
 
 

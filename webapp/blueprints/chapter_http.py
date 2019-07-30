@@ -21,13 +21,14 @@ chapter_http = Blueprint(
 
 class AnswerForHttp(db.Model):
     user_id = db.Column(db.Text, db.ForeignKey('users.email', ondelete="CASCADE"), primary_key=True)
-    challenge_param = db.Column(db.Boolean, default=False)
-    challenge_get = db.Column(db.Boolean, default=False)
-    challenge_post = db.Column(db.Boolean, default=False)
-    challenge_repeat = db.Column(db.Integer, default=0)
-    challenge_content_type = db.Column(db.Boolean, default=False)
+    challenge_param = db.Column(db.Boolean, default=False, nullable=False)
+    challenge_get = db.Column(db.Boolean, default=False, nullable=False)
+    challenge_post = db.Column(db.Boolean, default=False, nullable=False)
+    challenge_repeat = db.Column(db.Integer, default=0, nullable=False)
+    challenge_content_type = db.Column(db.Boolean, default=False, nullable=False)
 
     QUESTION_COUNT = 5
+    MAX_SCORE = 3
 
     def nb_answered(self):
         res = 0
@@ -55,9 +56,34 @@ class AnswerForHttp(db.Model):
         answer = cls.query.get(user_id)
         if answer is None:
             answer = cls(user_id=user_id)
+            answer.challenge_param = False
+            answer.challenge_get = False
+            answer.challenge_post = False
+            answer.challenge_repeat = 0
+            answer.challenge_content_type = False
             db.session.add(answer)
         return answer
 
+
+    def compute_score(self):
+        res = 0.
+
+        if self.challenge_param:
+            res += 0.25
+
+        if self.challenge_get:
+            res += 0.25
+
+        if self.challenge_post:
+            res += 1
+
+        if self.challenge_repeat >= NUMBER_OF_VISITS:
+            res += 0.5
+
+        if self.challenge_content_type:
+            res += 1
+
+        return res
 
 def get_dead_line():
     chapter = lessons.Chapter.query.get(CHAPTER_ID)
@@ -84,7 +110,7 @@ def quizz_status(user):
 @flask_login.login_required
 def render_quizz():
     user = flask_login.current_user
-    answer_object = AnswerForHttp.query.get(user.get_id())
+    answer_object = AnswerForHttp.get_or_create(user.get_id())
 
     return flask.render_template(
         'lessons/03-HTTP/quizz.html',
@@ -216,7 +242,7 @@ def challenge_content_type():
     if get_dead_line() < datetime.now().date():
         return "Deadline exceeded for this challenge!"
 
-    if flask.request.content_type == 'application/json':
+    if flask.request.headers.get('Accept') == 'application/json':
         answer = AnswerForHttp.get_or_create(flask_login.current_user.get_id())
         answer.challenge_content_type = True
         db.session.commit()

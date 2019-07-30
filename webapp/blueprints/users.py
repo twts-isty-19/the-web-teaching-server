@@ -44,20 +44,24 @@ def create_users(names_emails, mailer):
         )
 
         db.session.add(user)
+        try:
+            db.session.commit()
+            mailer.send_message(
+                subject='Your account on "The Learning Web Server"',
+                body="""Hello %s,
+    An account has been created for you on the website %s . Follow the
+    previous link to define your password!
+                """%(
+                    name,
+                    flask.url_for('users.redefine_password', email=email, token=token),
+                ),
+                sender=settings.MAIL_DEFAULT_SENDER,
+                recipients=[email],
+            )
+        except IntegrityError:
+            db.session.rollback()
 
-        mailer.send_message(
-            subject='Your account on "The Learning Web Server"',
-            body="""Hello %s,
-An account has been created for you on the website %s . Follow the
-previous link to define your password!
-            """%(
-                name,
-                flask.url_for('users.redefine_password', email=email, token=token),
-            ),
-            sender=settings.MAIL_DEFAULT_SENDER,
-            recipients=[email],
-        )
-    db.session.commit()
+
 
 
 

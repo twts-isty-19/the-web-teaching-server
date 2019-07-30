@@ -14,13 +14,22 @@
 <p>This website also contains some classical teaching material and
     exercises. Here are the available chapters:
 </p>
+{% if current_user.is_teacher %}
+    <a href="{{ url_for('answers.see_results') }}">
+        See the student's results
+    </a>
+{% endif %}
 <table>
     <thead>
         <th>Chapters</th>
         <th>Quizz</th>
         <th>Dead line</th>
+        {% if current_user.is_teacher %}
+        <th>Correction</th>
+        {% endif %}
     </thead>
     <tbody>
+
         {% for chapter in chapters %}
         <tr>
             <td>
@@ -34,6 +43,13 @@
                 </a>
             </td>
             <td>{{ chapter.end_date }}</td>
+            {% if current_user.is_teacher %}
+            <td>
+                <a href="{{ url_for('answers.correct_quizz', chapter_id=chapter.id) }}">
+                    Go to correction
+                </a>
+            </td>
+            {% endif %}
         </tr>
         {% endfor %}
     </tbody>

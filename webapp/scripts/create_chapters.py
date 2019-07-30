@@ -30,7 +30,7 @@ CHAPTERS = [
                     " <code><pre>"
                     "&lt;p id='hello' class='column-3' data-userid='42'>"
                     "Hello world!"
-                    "&lt;/p>
+                    "&lt;/p>"
                     "</pre></code>",
                 'coefficient': 0.5,
             },

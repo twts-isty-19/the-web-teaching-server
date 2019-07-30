@@ -116,8 +116,8 @@ CHAPTERS = [
             {
                 'title':
                     'Give a CSS selector for the <code>p</code> tags'
-                    ' inside a node with class <code>major</code>.'
-                'coefficient':1
+                    ' inside a node with class <code>major</code>.',
+                'coefficient':1,
             },
 
         ],

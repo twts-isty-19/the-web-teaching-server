@@ -27,13 +27,14 @@ then
 fi
 
 echo "Instianciate database, populating it..."
-if ! python3 webapp/scripts/create_chapters.py; then
+cd webapp
+if ! python3 scripts/create_chapters.py; then
     exit;
 fi
-if ! python3 webapp/scripts/create_mock_users.py; then
+if ! python3 scripts/create_mock_users.py; then
     exit;
 fi
-
+cd -
 echo "Database instanciated and populated!"
 
 # Hack in order to discard auto-commit from glitch

@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Quizz results{% endblock %}
+
+{% block head %}
+<script type="text/javascript" src="/static/quizz_corrector.js"></script>
+{% endblock head %}
+
+{% block content %}
+<h1>Results</h1>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            {% for chapter in chapters %}
+                <th>{{ chapter.name }}</th>
+            {% endfor %}
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for u in users_with_marks %}
+            <tr>
+                <th>
+                    {{ u.name }}
+                </th>
+                {% for score, max_score, color in u.marks %}
+                    <td style="background-color: {{ color }}">
+                        {{ score }} / {{ max_score }}
+                    </td>
+                {% endfor %}
+                <td>{{ u.total }} / {{ u.total_max }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

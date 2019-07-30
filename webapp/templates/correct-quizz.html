@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}{{ chapter_name }} - quizz correction{% endblock %}
+
+{% block head %}
+<script type="text/javascript" src="/static/quizz_corrector.js"></script>
+{% endblock head %}
+
+{% block content %}
+<div id="corrector-app" data-quizzname="{{ chapter_name }}"></div>
+<script type="text/javascript">
+    var node = document.getElementById('corrector-app');
+    var app = Elm.QuizzCorrector.init({
+      node: node,
+      flags :{
+        quizzName : node.dataset.quizzname
+      }
+    });
+</script>
+{% endblock %}

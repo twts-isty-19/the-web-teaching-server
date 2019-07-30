@@ -1,3 +1,4 @@
 .env
 __pycache__/
-webapp/create_chapters_with_exercises.py
+webapp/scripts/webapp/create_chapters_with_exercises.py
+elm-stuff/

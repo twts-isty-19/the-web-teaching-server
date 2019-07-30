@@ -5,5 +5,8 @@
 {% block content %}
     <p>{{ message }}</p>
     <p>This is your {{ count }}-th visit!</p>
-    <a href="{{ url_for('answers.challenge_repeat') }}">Visit this page again!</a>
+    <a href="{{ url_for('chapter_http.challenge_repeat') }}">Visit this page again!</a>
+    You cannot cheat anymore!
+
+    <p><a href="{{ url_for('chapter_http.render_quizz')}}">Come back to the HTTP challenges homepage.</a></p>
 {% endblock %}

@@ -5,6 +5,7 @@ import flask
 import flask_login
 from flask.blueprints import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
+from sqlalchemy.exc import IntegrityError
 
 from database import db
 import settings

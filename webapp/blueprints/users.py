@@ -76,7 +76,7 @@ def redefine_password(email, token):
         return redir_home
 
     if flask.request.method == 'GET':
-        return flask.render_template('redefine_password.html')
+        return flask.render_template('redefine_password.html', name=user.name)
 
     # POST method assumed here:
     password1 = flask.request.form.get('password1')
@@ -84,11 +84,11 @@ def redefine_password(email, token):
 
     if password1 is None or password2 is None:
         flask.flash("Please fulfill the two password fields")
-        return flask.render_template('redefine_password.html')
+        return flask.render_template('redefine_password.html', name=user.name)
 
     if password1 != password2:
         flask.flash("The passwords did not match")
-        return flask.render_template('redefine_password.html')
+        return flask.render_template('redefine_password.html', name=user.name)
 
     user.set_password(password1)
     user.token_for_register = None

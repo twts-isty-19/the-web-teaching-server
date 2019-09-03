@@ -6,6 +6,7 @@ import flask_login
 from flask.blueprints import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
+import sqlalchemy
 
 from database import db
 import settings
@@ -109,7 +110,7 @@ def login_post():
         return flask.redirect(flask.url_for('users.login_get'))
 
 
-    user = User.query.get(email)
+    user = User.query.filter(sqlalchemy.func.lower(User.email) == sqlalchemy.func.lower(email)).first()
     if user is None or not user.check_password(password):
         flask.flash("Authentication failed")
         return flask.redirect(flask.url_for('users.login_get'))

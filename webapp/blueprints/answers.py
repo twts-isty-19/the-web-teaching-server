@@ -153,9 +153,6 @@ def correct_quizz(chapter_id):
     if chapter is None:
         return flask.render_template('error.html', message= "chapter does not exist"), 404
 
-    if chapter.end_date >= datetime.now().date():
-        return flask.render_template('error.html', message="deadline is not over!"), 400
-
     return flask.render_template('correct-quizz.html', chapter_name=chapter.name)
 
 @answers.route('/correct-quizz/<chapter_id>/questions/', methods=['GET'])
@@ -167,10 +164,7 @@ def get_questions(chapter_id):
     chapter = Chapter.query.get(chapter_id)
     if chapter is None:
         return flask.jsonify({"error": "chapter does not exist"}), 404
-
-    if chapter.end_date >= datetime.now().date():
-        return flask.jsonify({"error": "deadline is not over"}), 400
-
+    
     return questions_json(chapter)
 
 
@@ -183,9 +177,6 @@ def mark_answer(chapter_id):
     chapter = Chapter.query.get(chapter_id)
     if chapter is None:
         return flask.jsonify({"error": "chapter does not exist"}), 404
-
-    if chapter.end_date >= datetime.now().date():
-        return flask.jsonify({"error": "deadline is not over"}), 400
 
     questions = chapter.questions_list
     questionNumber = flask.request.json['questionNumber']
@@ -269,7 +260,6 @@ def questions_json(chapter):
             for answer, students in res.items()
         ]
 
-    print(questions)
     return flask.jsonify([
         {
             'title': question.title,

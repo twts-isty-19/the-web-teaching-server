@@ -313,6 +313,18 @@ CHAPTERS = [
 
         ],
     },
+    {
+        'id': '06-websockets',
+        'name': 'Websockets',
+        'end_date': date(2019, 10, 16),
+        'questions': [
+            {
+            'title':
+                'No question for this lesson!',
+            'coefficient': 0
+            }
+        ]
+    }
 ]
 
 

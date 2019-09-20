@@ -26,6 +26,7 @@
         <th>Dead line</th>
         {% if current_user.is_teacher %}
         <th>Correction</th>
+        <th> Result </th>
         {% endif %}
     </thead>
     <tbody>
@@ -43,6 +44,7 @@
                 </a>
             </td>
             <td>{{ chapter.end_date }}</td>
+            <td> {{ score }}/{{ max }}</td>
             {% if current_user.is_teacher %}
             <td>
                 <a href="{{ url_for('answers.correct_quizz', chapter_id=chapter.id) }}">

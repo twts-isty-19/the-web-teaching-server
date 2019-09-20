@@ -58,7 +58,8 @@ def home():
                 chapter,
                 user,
             )
-    return flask.render_template('home.html', chapters=chapters)
+        score, max = answers_module.compute_score(chapter,user)
+    return flask.render_template('home.html', chapters=chapters, score=score, max=max)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=os.getenv('DEBUG', False))

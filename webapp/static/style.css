@@ -65,12 +65,12 @@ body {
 }
 
 #login input[type=email]:focus {
-  border: solid 3px red;
+  border-color: red;
   outline: none;
 }
 
 #login input[type=password]:focus {
-  border: solid 3px red;
+  border-color:red;
   outline: none;
 }
 

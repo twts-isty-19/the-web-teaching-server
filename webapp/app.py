@@ -49,7 +49,7 @@ with app.app_context():
 def home():
     chapters = sorted(lessons_module.Chapter.query.all(), key=lambda c: c.id)
     user = flask_login.current_user
-
+    marks = {}
     for chapter in chapters:
         if chapter.id == chapter_http_module.CHAPTER_ID:
             chapter.quizz_status = chapter_http_module.quizz_status(user)
@@ -58,7 +58,9 @@ def home():
                 chapter,
                 user,
             )
-    return flask.render_template('home.html', chapters=chapters)
+        score, max_score = answers_module.compute_score(chapter, user)
+        marks[chapter.id]=(score, max_score)
+    return flask.render_template('home.html', chapters=chapters, marks=marks)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=os.getenv('DEBUG', False))

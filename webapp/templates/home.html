@@ -27,6 +27,7 @@
         {% if current_user.is_teacher %}
         <th>Correction</th>
         {% endif %}
+        <th> Score </th>
     </thead>
     <tbody>
 
@@ -49,7 +50,9 @@
                     Go to correction
                 </a>
             </td>
+            
             {% endif %}
+            <td> {{ marks[chapter.id][0] }}/{{ marks[chapter.id][1] }}</td>
         </tr>
         {% endfor %}
     </tbody>

@@ -62,5 +62,12 @@ def home():
         marks[chapter.id]=(score, max_score)
     return flask.render_template('home.html', chapters=chapters, marks=marks)
 
+@app.before_request
+def before_request():
+    if not "https" in flask.request.headers.get("X-Forwarded-Proto", ""):
+        url = flask.request.url.replace('http://', 'https://', 1)
+        code = 301
+        return flask.redirect(url, code=code)
+  
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=os.getenv('DEBUG', False))

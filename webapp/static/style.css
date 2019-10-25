@@ -1,9 +1,41 @@
-.code {
-    background-color: #CCC;
-    border: none;
-    resize: none;
-}
+
 
 code {
     background-color: #CCC;
+}
+
+html {
+    background-color:#DCDCDC;
+
+}
+
+html, body {
+    height: 100%;
+  witdh : 100%;
+  margin :0;
+  	font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+
+#main {
+  
+   margin: 0 auto 0 auto;
+  height : 80%;
+  width : 70%;
+  text-align:center;
+  vertical-align: middle;
+  border-radius: 3px;
+  padding : 10px;
+  
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); /* IE 9 */
+  -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */	
+}
+
+.flash {
+  color: red;
+  margin : 10px;
 }

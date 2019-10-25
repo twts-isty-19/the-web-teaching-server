@@ -1,13 +1,34 @@
+
+
 {% extends "layout.html" %}
 
 {% block title %}Log in{% endblock %}
+{% block head %}<link rel="stylesheet" href="{{ url_for('static', filename='styles/login.css') }}">{% endblock %}
+
 
 {% block content %}
-Log in:
 
-<form method="POST" action="/login">
-    <label>Email UVSQ: <input type="email" name="email" /></label>
-    <label>Password: <input type="password" name="password" /></label>
-    <input type="submit" name="" value="Send" />
-</form>
+
+<div id="connexion">
+
+  			<img src="https://cdn.glitch.com/880b6cc1-76a4-4fd0-a576-d6d08d4d6317%2Fisty.png?v=1568909480589" class="logo">
+
+      <div id="header">
+				<h1>LOG IN</h1>
+          </div>
+
+			<div id="formulaire">
+
+			<form action="/login" method="post">
+
+	          	<div id=ine><input type="email" name="email" placeholder="Mail" required></div>
+	      			<div id="mdp"><input type="password" name="password" placeholder="Mot de passe" required></div>
+
+	      		<div id="footer">
+  	      			<input class="btn" type="submit" value="Log in">
+            </div>
+
+			</form>
+  </div>
+		</div>
 {% endblock %}

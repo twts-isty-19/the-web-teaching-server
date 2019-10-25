@@ -1,0 +1,71 @@
+#main {
+  width : 30%;
+  height: 70%;
+  padding: 0;
+margin-left: auto;
+margin-right: auto;
+	text-align: center;
+  
+} 
+
+
+h1{
+	font-size: 18px;
+	color : white;
+	height: auto; 
+
+}
+.logo{
+	width: 100%;
+}
+#header{
+	padding:0;
+	background-color: #282830;
+	border-top-right-radius: 0.25em;
+	border-top-left-radius : 0.25em;
+
+	margin-top: 20px;
+	padding-top: 2%;
+	padding-bottom: 2%;
+
+
+}
+
+#formulaire {
+	background-color: white;
+	padding-top: 10px;
+
+}
+
+#connexion #formulaire input{
+	margin: 10px;
+	padding : 15px;
+	width: 80%;
+}
+
+#footer{
+	background-color: white;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+
+
+.btn {
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  color: #ffffff;
+  font-size: 14px;
+  background: #1dabb8;
+  padding: 9px 20px 10px 20px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 90px;
+}
+
+.btn:hover {
+  background: #1d98a3;
+  text-decoration: none;
+}

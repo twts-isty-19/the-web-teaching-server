@@ -1,5 +1,8 @@
 import os
 import base64
+import string
+import random
+
 
 import flask
 import flask_login
@@ -8,6 +11,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
 import sqlalchemy
 
+import mailConfig
 from database import db
 import settings
 
@@ -123,6 +127,46 @@ def login_post():
 @users.route('/login', methods=['GET'])
 def login_get():
     return flask.render_template('login.html')
+ 
+@users.route('/forgot_password', methods=['GET'])
+def forgot_password_get():
+  return flask.render_template('forgot_password.html')
+
+
+@users.route('/forgot_password', methods=['POST'])
+def forgot_password_post():
+  
+  email = flask.request.form.get('email')
+
+  if not email :
+        flask.flash("You need to provide an email adress")
+        return flask.redirect(flask.url_for('users.forgot_password_get'))
+  
+  user = User.query.get(email)
+  
+  if user is None :
+      flask.flash("Mail not found")
+      return flask.redirect(flask.url_for('users.forgot_password_get'))
+      
+  letters = string.ascii_lowercase + string.digits
+  password = ''.join(random.choice(letters) for i in range(5))
+  #print(password) -> For debugging
+  
+  mailConfig.mail.send_message(
+                subject='Your new password on "The Learning Web Server"',
+                body="""Hello ,
+You have requested a new password on the website . Connect with your email and the password %s 
+                """%(password),
+                sender=settings.MAIL_DEFAULT_SENDER,
+                recipients=email.split(),
+            )
+  user.set_password(password)
+  user.token_for_register = None
+  db.session.commit()
+  
+  
+  flask.flash("New password send by mail !")
+  return flask.redirect(flask.url_for('users.login_get'))
 
 @users.route('/logout')
 def logout():

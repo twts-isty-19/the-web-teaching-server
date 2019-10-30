@@ -11,6 +11,7 @@ import blueprints.answers as answers_module
 
 from database import db
 
+#This mail config is used for the creation of a user only | Try to remove it, but used in scripts/create_mock
 app = flask.Flask(__name__)
 app.secret_key = os.getenv('SECRET_KEY', '12345')
 app.config.update({

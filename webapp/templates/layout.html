@@ -2,13 +2,13 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %} - The Web Teaching Server</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="utf-8">
     {% block head %}{% endblock %}
 </head>
-<body>
-    <a href="/">
-      <img id="picture" src="https://cdn.glitch.com/6440916f-9243-4f1d-aad1-d004ac1366ce%2FTheWebTeachingServer.png?v=1567887546952" alt="The Web Teaching Server">
-    </a>
+<body style="padding-left:36%;display: flex;flex-direction: column;">
+  <p><img class="img-logo" src="https://cdn.glitch.com/0053d526-9f2d-417d-8de7-e49ba9dd0623%2Flogo.png?v=1567623831898" alt="site logo"></p>
+    <!--<h1><a href="/">The Web Teaching Server</a></h1>--> 
     <nav>
         {% if current_user.is_authenticated %}
           <div><span>{{ current_user.email }}</span>

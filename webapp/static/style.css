@@ -10,13 +10,21 @@ code {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0;
 }
 
+.login{
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .img-logo {
-  width: 130px;
-  heigh: 530px;
+  width: 280px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
 }
 
 
@@ -31,6 +39,7 @@ body {
   padding: 1%;
   margin: 3%;
 }
+
 
 #login {
   display: flex;

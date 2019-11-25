@@ -45,14 +45,14 @@ body {
   border-bottom: 1px solid #a6abaf;
   border-radius: 6px 6px 0 0;
   box-sizing: border-box;
-  color: rgb(238, 238, 238);
+  color: rgb(208, 238, 238);
   display: block;
-  height: 56px;
-  font: 600 24px/1 'Open Sans', sans-serif;
-  padding-top: 14px;
+  height: 20px;
+  font: 24px/1 'Open Sans', sans-serif;
+  padding-top: 0px;
   margin: 0;
   text-align: center;
-  text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0.2,0.2), 0 1px 0 #000;
 }
 #login {
   display: flex;

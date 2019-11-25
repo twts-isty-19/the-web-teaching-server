@@ -14,10 +14,9 @@ body {
   margin: 0;
 }
 
-#picture {
-  width: auto;
-  heigh: 300px;
-  background-color: #15243C;
+.img-logo {
+  width: 130px;
+  heigh: 530px;
 }
 
 

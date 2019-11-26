@@ -10,33 +10,58 @@ code {
 body {
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0;
+  background-image: linear-gradient(to top, #209cff 0%, #68e0cf 100%);
 }
 
-#picture {
+.login{
   width: auto;
-  heigh: 300px;
-  background-color: #15243C;
+  height: auto;
 }
 
 
-.content {
+.img-logo {
+  width: 280px;
+  height: 300px;
+}
+
+
+.content {  
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
-  border: none;
+  width: auto;
   border-radius: 10px;
   box-shadow: -1px 2px 5px 1px rgba(0, 0, 0, 0.7);
-  padding: 1%;
+  padding: 2%;
   margin: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  background: #eceeee;
+  border: 1px solid #42464b;
 }
+
+.loginh1{
+  border-bottom: 1px solid #a6abaf;
+  border-radius: 6px 6px 0 0;
+  box-sizing: border-box;
+  color: rgb(208, 238, 238);
+  display: block;
+  height: 20px;
+  font: 24px/1 'Open Sans', sans-serif;
+  padding-top: 0px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0.2,0.2), 0 1px 0 #000;
+}
+
 
 #login {
   display: flex;
   flex-direction: column;
+ 
 }
+
 
 #login input {
   margin: 5% 0;
@@ -45,11 +70,17 @@ body {
 #login input[type=submit] {
   background-color: #C8C8C8;
   border-radius: 0.6em;
-  border: 4mm ridge;
-  font-size: 2em;
-  color: red;
+  font-size: 1em;
+  color: white;
+  cursor: pointer;
   padding: 2%;
   width: 350px;
+  background-image: linear-gradient(to right, #de48b5 0%, #0097ff 100%);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius:5px;
+  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
 }
 
 #login input[type=email] {

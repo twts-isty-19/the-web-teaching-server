@@ -19,12 +19,14 @@ body {
   height: auto;
 }
 
+
 .img-logo {
   width: 280px;
   margin-left: auto;
   margin-right: auto;
   height: 300px;
 }
+
 
 .content {  
   display: flex;

@@ -65,6 +65,11 @@ def create_users(names_emails, mailer):
 
 
 
+@users.route('/forgot_password/')
+def forgot_password():
+    redir_forgotPass = flask.redirect(flask.url_for('home'))
+    print("forgot")
+    return redir_forgotPass
 
 
 @users.route('/redefine_password/<email>/<token>', methods=['GET', 'POST'])

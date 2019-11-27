@@ -1,15 +1,37 @@
 import os
 import base64
 
+import settings
 import flask
+from flask_mail import Mail, Message
 import flask_login
+import flask_mail
 from flask.blueprints import Blueprint
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.exc import IntegrityError
 import sqlalchemy
 
 from database import db
-import settings
+
+app = flask.Flask(__name__)
+app.secret_key = os.getenv('SECRET_KEY', '12345')
+app.config.update({
+    'SQLALCHEMY_TRACK_MODIFICATIONS': False,
+    'SQLALCHEMY_DATABASE_URI': os.getenv(
+        'DB_URI',
+        'sqlite:///db.sqlite',
+    ),
+    'MAIL_SERVER': 'smtp.gmail.com',
+    'MAIL_PORT': os.getenv('MAIL_PORT', 465),
+    'MAIL_USE_TLS': False,
+    'MAIL_USE_SSL': True,
+    'MAIL_USERNAME': os.getenv('MAIL_USERNAME', 'foo@gmail.com'),
+    'MAIL_PASSWORD': os.getenv('MAIL_PASSWORD', '12345'),
+    'SERVER_NAME': os.getenv('SERVER_NAME'),
+})
+
+
+mail = flask_mail.Mail(app)
 
 users = Blueprint(
     'users',
@@ -67,9 +89,29 @@ def create_users(names_emails, mailer):
 
 @users.route('/forgot_password/')
 def forgot_password():
-    redir_forgotPass = flask.redirect(flask.url_for('home'))
-    print("forgot")
-    return redir_forgotPass
+    return flask.render_template('forgotten-password.html')
+
+  
+@users.route('/forgotten_password', methods=['GET', 'POST'])
+def forgotten_password():
+  
+   email = flask.request.form.get('email')
+   user = User.query.get(email)  
+
+   redir_home = flask.redirect(flask.url_for('home'))
+    
+   if user is None:
+        flask.flash("Something went wrong...")
+        return redir_home
+   else:
+    mail.send_message(subject='Redefine your password !',
+                     body="""Hello,
+                      to redefine your password click on this link %s!
+                      """%(flask.url_for('users.redefine_password',email=email,token=user),)
+                      ,sender=settings.MAIL_DEFAULT_SENDER
+                      ,recipients=[email],)
+    flask.flash("Check your email box!")
+    return redir_home
 
 
 @users.route('/redefine_password/<email>/<token>', methods=['GET', 'POST'])

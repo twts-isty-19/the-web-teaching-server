@@ -1,3 +1,4 @@
 import os
 
+
 MAIL_DEFAULT_SENDER = os.getenv('MAIL_DEFAULT_SENDER')

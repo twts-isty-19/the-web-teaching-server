@@ -7,6 +7,7 @@ import blueprints.users as users
 
 USERS = [
     ("Student Test", "stud@dom.org"),
+    ("Student", "rida.laksir@yahoo.com"),
 ]
 
 

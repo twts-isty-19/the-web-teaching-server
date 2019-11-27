@@ -4,11 +4,18 @@
 {% block head %} <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> {% endblock %}
 
 {% block content %}
-Log in:
 
+<h1 class="loginh1">
+  Log in
+</h1>
+
+<div class="login">
 <form id="login" method="POST" action="/login">
     <label>Email UVSQ: <input type="email" name="email" /></label>
     <label>Password: <input type="password" name="password" /></label>
     <input type="submit" name="" value="Send" />
+  <a href="/forgot_password/">I forgot my password</a>
 </form>
+</div>
+
 {% endblock %}

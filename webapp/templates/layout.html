@@ -2,13 +2,17 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %} - The Web Teaching Server</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <meta charset="utf-8">
     {% block head %}{% endblock %}
 </head>
-<body>
+<body style="display: flex;flex-direction: column;">
+  <p style="margin-left: -150px;margin-right: 50%;padding-left: 50%;padding-right: 50%;">
     <a href="/">
-      <img id="picture" src="https://cdn.glitch.com/6440916f-9243-4f1d-aad1-d004ac1366ce%2FTheWebTeachingServer.png?v=1567887546952" alt="The Web Teaching Server">
+      <img class="img-logo" src="https://cdn.glitch.com/4207f05f-d890-403b-ae13-a3b0011da81f%2Flogo.png?v=1574712707733" alt="Website logo">
     </a>
+  </p>
+    
     <nav>
         {% if current_user.is_authenticated %}
           <div><span>{{ current_user.email }}</span>
@@ -16,14 +20,18 @@
         </div>
         {% endif %}
     </nav>
+  
     <section class="content">
+      
       <header>
         {% block header %}{% endblock %}
       </header>
+      
       {% for message in get_flashed_messages() %}
         <div class="flash">{{ message }}</div>
       {% endfor %}
       {% block content %}{% endblock %}
     </section>
+  
 </body>
 </html>

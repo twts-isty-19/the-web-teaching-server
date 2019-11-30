@@ -3,44 +3,75 @@
 {% block title %}Json and Elm decoders{% endblock %}
 
 {% block content %}
+
 <h2>Json and Elm decoders</h2>
 
-<p>It is time to make the server and the client to communicate
-    by another way of HTML. We are still doing HTTP, so the schema
-    is always the same: the client send a request to the server
-    and the server send back a response.
+    <div id="container_ajax">
+        <hr/>
 
-    <br />
+        <p>It is time to make the server and the client to communicate
+            by another way of HTML. We are still doing HTTP, so the schema
+            is always the same: the client send a request to the server
+            and the server send back a response.
 
-     However, in a Single Page Application (SPA) the page is
-     not reloaded and those requests are performed via Javascript
-     (in our case, this Javascript is compiled from Elm).
+            <br />
 
-     <br />
-     The most currently used format to perform this communication
-     is JSON (JavaScript Object Notation). Other formats can also be used:
-     <ul>
-        <li>XML</li>
-        <li>Protobuf</li>
-        <li>GraphQL</li>
-     </ul>
-</p>
+             However, in a Single Page Application (SPA) the page is
+             not reloaded and those requests are performed via Javascript
+             (in our case, this Javascript is compiled from Elm).
 
-<h3>Slides:</h3>
-<p>You can see <a href="https://slides.com/sebbes/json-decoders" target="_blank">
-    the slides of the lecture</a>.<p>
+             <br />
+             The most currently used format to perform this communication
+             is JSON (JavaScript Object Notation). Other formats can also be used:  
+             <ul>
+                <li>XML</li>
+                <li>Protobuf</li>
+                <li>GraphQL</li>
+             </ul>
+        </p>
+        <hr/><br/>
 
-<p><strong>For an exausthive ressource,</strong> please read
-<a href="https://package.elm-lang.org/packages/elm/http/latest/" target="_blank">
-    the Http Elm module documentation
-</a>
-and
-<a href="https://package.elm-lang.org/packages/elm/http/latest/" target="_blank">
-    the JSON Elm module documentation
-</a>.
-</p>
+        <!-- table -->
+        <div class="table">
+          <table id="table">
+            <thead>
+              <th>Slides</th>
+              <th>Further reading</th>
+              <th>Tutorial</th>
+              <th>Quizz</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p>
+                    You can see <a href="https://slides.com/sebbes/json-decoders" target="_blank">
+                    the slides of the lecture</a>.
+                  </p>
+                </td>
+                <td class="links">
+                  <p>
+                    <p><strong>For an exausthive ressource,</strong> please read
+                    <a href="https://package.elm-lang.org/packages/elm/http/latest/" target="_blank">
+                        the Http Elm module documentation
+                    </a>
+                    and
+                    <a href="https://package.elm-lang.org/packages/elm/http/latest/" target="_blank">
+                        the JSON Elm module documentation
+                    </a>.
+                    </p>
+                  </p>
+                </td>
+                <td>
+                  <p>
+                    Create an account on Glitch.com and log you in. <br/>
+                    You can now <a href="https://glitch.com/edit/#!/remix/twts-tuto-04" target="_blank">do the tutorial!</a>
+                  </p>
+                </td>
+                <td> <a href="http://sassy-bismuth.glitch.me/quizz/04-AJAX">Quizz AJAX</a></td>
+              </tr>
+            </tbody>
+         </table>
+        </div>
+   </div>
 
-<h3>Tutorial</h3>
-<p>Create an account on Glitch.com and log you in. <br/>
-You can now <a href="https://glitch.com/edit/#!/remix/twts-tuto-04" target="_blank">do the tutorial!</a></p>
 {% endblock %}

@@ -1,0 +1,4 @@
+ChangOSe the opening mode of external links
+Problem: External links do not open the new tab
+Solution: Apply a property to the HTML code
+

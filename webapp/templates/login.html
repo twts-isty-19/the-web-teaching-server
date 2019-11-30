@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 
 {% block title %}Log in{% endblock %}
-{% block head %} <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> {% endblock %}
+{% block head %} 
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+{% endblock %}
 
 {% block content %}
-Log in:
-
-<form id="login" method="POST" action="/login">
-    <label>Email UVSQ: <input type="email" name="email" /></label>
-    <label>Password: <input type="password" name="password" /></label>
-    <input type="submit" name="" value="Send" />
-</form>
+  <form id="login" method="POST" action="/login">
+      <label>Email UVSQ: <input type="email" name="email" /></label>
+      <label>Password: <input type="password" name="password" /></label>
+      <input type="submit" name="" value="Send" />
+  </form>
 {% endblock %}

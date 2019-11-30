@@ -3,24 +3,34 @@
 {% block title %}Welcome{% endblock %}
 
 {% block content %}
-<p>Welcome to "The Web Teaching Server". The aim of this website
-    is to learn how to build... a website!
-    This website is deliberately minimalist in design and functionalities
-    because YOU will learn partly by hacking this app and proposing
-    improvements. See <a href="https://github.com/twts-isty-19/the-web-teaching-server" target="_blank">
-    the instructions to contribute!</a>
+<div id="container">
+  <h2>Welcome !</h2>
+  <div class="welcome">
+    
+    <p>
+      Welcome to "The Web Teaching Server". The aim of this website
+      is to learn how to build... a website!
+      This website is deliberately minimalist in design and functionalities
+      because YOU will learn partly by hacking this app and proposing
+      improvements. See <a href="https://github.com/twts-isty-19/the-web-teaching-server" target="_blank">  
+      the instructions to contribute!</a>
     </p>
-
-<p>This website also contains some classical teaching material and
-    exercises. Here are the available chapters:
-</p>
-{% if current_user.is_teacher %}
-    <a href="{{ url_for('answers.see_results') }}">
-        See the student's results
-    </a>
-{% endif %}
-<table>
-    <thead>
+    <hr/>
+    <p>
+      This website also contains some classical teaching material and
+      exercises. Here are the available chapters:
+    </p>
+  </div>
+  
+  {% if current_user.is_teacher %}
+      <a href="{{ url_for('answers.see_results') }}">
+          See the student's results
+      </a>
+  {% endif %}
+  
+  <div class="table">
+    <table id="table">
+      <thead>
         <th>Chapters</th>
         <th>Quizz</th>
         <th>Dead line</th>
@@ -28,9 +38,8 @@
         <th>Correction</th>
         {% endif %}
         <th> Score </th>
-    </thead>
-    <tbody>
-
+      </thead>
+      <tbody>
         {% for chapter in chapters %}
         <tr>
             <td>
@@ -50,12 +59,15 @@
                     Go to correction
                 </a>
             </td>
-            
+
             {% endif %}
             <td> {{ marks[chapter.id][0] }}/{{ marks[chapter.id][1] }}</td>
         </tr>
         {% endfor %}
-    </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+  
+</div>
 
 {% endblock %}

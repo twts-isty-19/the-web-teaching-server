@@ -3,60 +3,84 @@
 {% block title %}HTML and CSS{% endblock %}
 
 {% block content %}
-<h2>HTML and CSS</h2>
+  <h2>HTML and CSS</h2>
 
-<p>Here are some links to learn the basics about HTML and CSS.
-    We will learn how to
-    use specific HTML tags and CSS rules during the partice session.
-    <strong>Be very careful if you
-    browse the web on your own</strong>: a lot of ressources are outdated
-    or do not show good practices. If you are looking at answers on
-    StackOverflow or similar, please check the date of the answer,and
-    ompare the number of votes on the accepted answer and the second
-    answer.
+  <div id="container_htmlCss">
+    <hr/>
+    <p>
+      Here are some links to learn the basics about HTML and CSS.
+      We will learn how to
+      use specific HTML tags and CSS rules during the partice session.
+      <strong>Be very careful if you
+      browse the web on your own</strong>: a lot of ressources are outdated
+      or do not show good practices. If you are looking at answers on
+      StackOverflow or similar, please check the date of the answer,and
+      ompare the number of votes on the accepted answer and the second
+      answer.
 
-    <br />
+      <br />
+      Keep in mind:
+      <ul>
+          <li>HTML is for content <em>only</em>,</li>
+          <li>CSS is for presentation,</li>
+          <li>use tables in order to display tabular data, not for layout!</li>
+      </ul>
+    </p>
+    <hr/><br/>
 
-    Keep in mind:
-    <ul>
-        <li>HTML is for content <em>only</em>,</li>
-        <li>CSS is for presentation,</li>
-        <li>use tables in order to display tabular data, not for layout!</li>
-    </ul>
-</p>
+    <!-- table -->
+    <div class="table">
+      <table id="table">
+        <thead>
+          <th>Slides</th>
+          <th>Further reading</th>
+          <th>Tutorial</th>
+          <th>Quizz</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+                <a href="https://slides.com/sebbes/html-css/" target="_blank">See the slides</a>
+            </td>
+            <td class="links">
+              <p><strong>Read the following links:</strong></p>
+              <ul>
+                  <li>HTML: <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" 
+                               target="_blank">https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started</a></li>
+                  <li>CSS: read at least the content of the following sections:
+                      <ul>
+                          <li>
+                              <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/How_CSS_works" target="_blank"> 
+                                  How CSS work
+                              </a>,
+                          </li>
+                          <li>
+                              <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors" target="_blank"> 
+                                  all the sections concerning the selectors
+                              </a>
+                          </li>
+                          <li>
+                              and 
+                              <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction" target="_blank"> 
+                                  the overview concerning CSS layout
+                              </a> (you can ignore "Floats" which are pretty difficult to
+                              use correctly, just be aware that it exists 😊).
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+            </td>
+            <td>
+              <p>
+                Create an account on Glitch.com and log you in. <br/>
+                You can now <a href="https://glitch.com/edit/#!/remix/twts-tuto-01" target="_blank">do the tutorial!</a>
+              </p> 
+            </td>
+            <td> <a href="http://sassy-bismuth.glitch.me/quizz/01-HTML-CSS">Quizz HTML et CSS</a></td>
+          </tr>
+        </tbody>
+     </table>
+    </div>
 
-<h3>Slides</h3>
-<a href="https://slides.com/sebbes/html-css/" target="_blank">See the slides</a>
-
-<h3>Further reading</h3>
-
-<p><strong>Read the following links:</strong></p>
-<ul>
-    <li>HTML: <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started" target="_blank">https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/Getting_started</a></li>
-    <li>CSS: read at least the content of the following sections:
-        <ul>
-            <li>
-                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/How_CSS_works" target="_blank">
-                    How CSS work
-                </a>,
-            </li>
-            <li>
-                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Introduction_to_CSS/Selectors" target="_blank">
-                    all the sections concerning the selectors
-                </a>
-            </li>
-            <li>
-                and
-                <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction" target="_blank">
-                    the overview concerning CSS layout
-                </a> (you can ignore "Floats" which are pretty difficult to
-                use correctly, just be aware that it exists 😊).
-            </li>
-        </ul>
-    </li>
-</ul>
-
-<h3>Tutorial</h3>
-<p>Create an account on Glitch.com and log you in. <br/>
-You can now <a href="https://glitch.com/edit/#!/remix/twts-tuto-01" target="_blank">do the tutorial!</a></p>
+  </div>
 {% endblock %}
